@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()<UIGestureRecognizerDelegate>
-@property (assign, nonatomic) CGFloat distance;
+
 @property (assign, nonatomic) CGFloat FullDistance;
 @property (assign, nonatomic) CGFloat Proportion;
 
@@ -20,27 +20,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
+    UIImageView *bgImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"leftbackiamge"]];
+    bgImage.frame = self.view.bounds;
+    bgImage.alpha = 0.9;
+
+    [self.view addSubview:bgImage];
     
 }
-
 
 - (instancetype)initWithLeftView:(UIViewController *)leftVC andMainView:(UIViewController *)mainVC
 {
     if (self = [super init]) {
         
+        leftVC.view.center = CGPointMake(leftVC.view.center.x - 50, leftVC.view.center.y);
+        leftVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.8, 0.8);
+        
+        
         self.leftVC = leftVC;
         self.mainVC = mainVC;
         
         self.pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSigleTap:)];
         
+        [singleTap setNumberOfTapsRequired:1];
+        singleTap.delegate = self;
         self.pan.delegate = self;
+        
         [self.mainVC.view addGestureRecognizer:self.pan];
-//        self.leftVC.view.hidden = YES;
+        [self.mainVC.view addGestureRecognizer:singleTap];
+        
         [self.view addSubview:self.leftVC.view];
         
-//        UIView *view = [[UIView alloc]init];
+        //UIView *view = [[UIView alloc]init];
 //        view.frame = self.leftVC.view.bounds;
 //        view.backgroundColor = [UIColor blackColor];
 //        view.alpha = 0.5;
@@ -70,7 +81,9 @@
         proportion *= 1 - self.Proportion;
         proportion /= 0.6;
         proportion += 1;
-            if (proportion <= self.Proportion) { // 若比例已经达到最小，则不再继续动画
+        
+            if (proportion <= self.Proportion) {
+                // 若比例已经达到最小，则不再继续动画
                 return;
             }
         
@@ -92,6 +105,12 @@
     
     
     
+}
+
+
+- (void)handleSigleTap:(UITapGestureRecognizer *)recognizer
+{
+    [self showHome];
 }
 
 

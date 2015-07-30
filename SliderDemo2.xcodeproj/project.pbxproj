@@ -430,6 +430,7 @@
 				CEC706E41B69B6E1001F7F58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEC706E51B69B6E1001F7F58 /* Build configuration list for PBXNativeTarget "SliderDemo2Tests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +439,7 @@
 				CEC706E71B69B6E1001F7F58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

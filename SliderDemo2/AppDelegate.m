@@ -19,13 +19,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    LeftViewController *leftVC = [[LeftViewController alloc]init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     
-    MainViewController *mainVC = [[MainViewController alloc]init];
+    LeftViewController *leftVC = [storyboard instantiateViewControllerWithIdentifier:@"LeftView"];
+    MainViewController *mainVC = [storyboard instantiateViewControllerWithIdentifier:@"MainView"];
     
-    ViewController *VC = [[ViewController alloc]initWithLeftView:leftVC andMainView:mainVC];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:mainVC];
     
-    self.window.rootViewController = VC;
+    self.myVC = [[ViewController alloc]initWithLeftView:leftVC andMainView:nav];
+    
+    self.window.rootViewController = self.myVC;
     
     [self.window makeKeyAndVisible];
     

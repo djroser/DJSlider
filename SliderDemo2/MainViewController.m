@@ -7,8 +7,10 @@
 //
 
 #import "MainViewController.h"
-
+#import "AppDelegate.h"
+#import "ViewController.h"
 @interface MainViewController ()
+- (IBAction)leftSlider:(id)sender;
 
 @end
 
@@ -16,22 +18,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor purpleColor];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (IBAction)leftSlider:(id)sender {
+    
+    AppDelegate *mydelegate = [[UIApplication sharedApplication]delegate];
+    
+    if (mydelegate.myVC.distance == 0) {
+        [mydelegate.myVC showLeft];
+        
+    } else {
+        [mydelegate.myVC showHome];
+        
+    }
+    
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

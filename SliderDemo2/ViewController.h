@@ -20,9 +20,13 @@
 
 //滑动手势控制器
 @property (nonatomic, strong) UIPanGestureRecognizer *pan;
+@property (assign, nonatomic) CGFloat distance;
 
 - (instancetype)initWithLeftView:(UIViewController *)leftVC andMainView:(UIViewController *)mainVC;
 
+- (void)showLeft;
+
+- (void)showHome;
 
 @end
 
