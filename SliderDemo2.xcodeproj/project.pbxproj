@@ -14,6 +14,8 @@
 		CEC706D01B69B6E1001F7F58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC706CF1B69B6E1001F7F58 /* Images.xcassets */; };
 		CEC706D31B69B6E1001F7F58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC706D11B69B6E1001F7F58 /* LaunchScreen.xib */; };
 		CEC706DF1B69B6E1001F7F58 /* SliderDemo2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC706DE1B69B6E1001F7F58 /* SliderDemo2Tests.m */; };
+		CEC706EA1B69B703001F7F58 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC706E91B69B703001F7F58 /* LeftViewController.m */; };
+		CEC706ED1B69B716001F7F58 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC706EC1B69B716001F7F58 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		CEC706D81B69B6E1001F7F58 /* SliderDemo2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SliderDemo2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC706DD1B69B6E1001F7F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEC706DE1B69B6E1001F7F58 /* SliderDemo2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SliderDemo2Tests.m; sourceTree = "<group>"; };
+		CEC706E81B69B703001F7F58 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		CEC706E91B69B703001F7F58 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		CEC706EB1B69B716001F7F58 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CEC706EC1B69B716001F7F58 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,10 @@
 				CEC706C71B69B6E1001F7F58 /* AppDelegate.m */,
 				CEC706C91B69B6E1001F7F58 /* ViewController.h */,
 				CEC706CA1B69B6E1001F7F58 /* ViewController.m */,
+				CEC706E81B69B703001F7F58 /* LeftViewController.h */,
+				CEC706E91B69B703001F7F58 /* LeftViewController.m */,
+				CEC706EB1B69B716001F7F58 /* MainViewController.h */,
+				CEC706EC1B69B716001F7F58 /* MainViewController.m */,
 				CEC706CC1B69B6E1001F7F58 /* Main.storyboard */,
 				CEC706CF1B69B6E1001F7F58 /* Images.xcassets */,
 				CEC706D11B69B6E1001F7F58 /* LaunchScreen.xib */,
@@ -220,7 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC706CB1B69B6E1001F7F58 /* ViewController.m in Sources */,
+				CEC706EA1B69B703001F7F58 /* LeftViewController.m in Sources */,
 				CEC706C81B69B6E1001F7F58 /* AppDelegate.m in Sources */,
+				CEC706ED1B69B716001F7F58 /* MainViewController.m in Sources */,
 				CEC706C51B69B6E1001F7F58 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

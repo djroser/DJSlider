@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
+#import "LeftViewController.h"
+#import "MainViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +18,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    LeftViewController *leftVC = [[LeftViewController alloc]init];
+    
+    MainViewController *mainVC = [[MainViewController alloc]init];
+    
+    ViewController *VC = [[ViewController alloc]initWithLeftView:leftVC andMainView:mainVC];
+    
+    self.window.rootViewController = VC;
+    
+    [self.window makeKeyAndVisible];
+    
+    
+    
     return YES;
 }
 
