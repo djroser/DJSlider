@@ -12,6 +12,9 @@
 
 @property (assign, nonatomic) CGFloat FullDistance;
 @property (assign, nonatomic) CGFloat Proportion;
+@property (assign, nonatomic) CGPoint centerOfLeftViewAtBeginning;
+@property (assign, nonatomic) CGFloat proportionOfLeftView;
+@property (assign, nonatomic) CGFloat distanceOfLeftView;
 
 @end
 
@@ -34,7 +37,7 @@
         
         leftVC.view.center = CGPointMake(leftVC.view.center.x - 50, leftVC.view.center.y);
         leftVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.8, 0.8);
-        
+        self.centerOfLeftViewAtBeginning = leftVC.view.center;
         
         self.leftVC = leftVC;
         self.mainVC = mainVC;
@@ -61,7 +64,8 @@
         
         self.FullDistance = 0.78;
         self.Proportion = 0.77;
-        
+        self.proportionOfLeftView = 1;
+        self.distanceOfLeftView = 50;
         
     }
     return self;
@@ -73,6 +77,7 @@
     CGFloat x = [recognizer translationInView:self.view].x;
     
     CGFloat tureDistance = self.distance + x;
+    CGFloat tureProportion = tureDistance / (kScreenWidth * self.FullDistance);
     
     if (tureDistance >= 0) {
         
@@ -89,6 +94,11 @@
         
         recognizer.view.center = CGPointMake(self.view.center.x + tureDistance, self.view.center.y);
         recognizer.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, proportion, proportion);
+        
+        CGFloat pro = 0.8 + (self.proportionOfLeftView - 0.8) * tureProportion;
+        
+        self.leftVC.view.center = CGPointMake(self.centerOfLeftViewAtBeginning.x + self.distanceOfLeftView * tureProportion, self.centerOfLeftViewAtBeginning.y - (self.proportionOfLeftView - 1) * self.leftVC.view.frame.size.height * tureProportion / 2);
+        self.leftVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, pro, pro);
 
     }
     
@@ -117,24 +127,30 @@
 - (void)showLeft
 {
     self.distance = self.view.center.x * (self.FullDistance + self.Proportion / 2);
-    [self doTheAnimate:self.Proportion];
+    [self doTheAnimate:self.Proportion type:@"left"];
 }
 
 
 - (void)showHome
 {
     self.distance = 0;
-    [self doTheAnimate:1];
+    [self doTheAnimate:1 type:@"home"];
 }
 
 
-- (void)doTheAnimate:(CGFloat)proportion
+- (void)doTheAnimate:(CGFloat)proportion type:(NSString *)type
 {
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
         
         self.mainVC.view.center = CGPointMake(self.view.center.x + self.distance, self.view.center.y);
         self.mainVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, proportion, proportion);
+        
+        if ([type isEqualToString:@"left"]) {
+            NSLog(@"equal");
+            self.leftVC.view.center = CGPointMake(self.centerOfLeftViewAtBeginning.x + self.distanceOfLeftView, self.leftVC.view.center.y);
+            self.leftVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, self.proportionOfLeftView, self.proportionOfLeftView);
+        }
         
     } completion:^(BOOL finished) {
         
